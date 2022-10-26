@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>节点测速流程 | 我的博客</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="XXX">
+    
+    <link rel="preload" href="/interview/assets/css/0.styles.7bcb96c2.css" as="style"><link rel="preload" href="/interview/assets/js/app.8b7001fa.js" as="script"><link rel="preload" href="/interview/assets/js/3.09e61146.js" as="script"><link rel="preload" href="/interview/assets/js/1.645caf6f.js" as="script"><link rel="preload" href="/interview/assets/js/36.3f091898.js" as="script"><link rel="prefetch" href="/interview/assets/js/10.2850c218.js"><link rel="prefetch" href="/interview/assets/js/11.d385cf98.js"><link rel="prefetch" href="/interview/assets/js/12.d30c7716.js"><link rel="prefetch" href="/interview/assets/js/13.aa59dd2b.js"><link rel="prefetch" href="/interview/assets/js/14.30c19909.js"><link rel="prefetch" href="/interview/assets/js/15.f6ae54d5.js"><link rel="prefetch" href="/interview/assets/js/16.cf6e60f2.js"><link rel="prefetch" href="/interview/assets/js/17.25b3e831.js"><link rel="prefetch" href="/interview/assets/js/18.54c0ddbe.js"><link rel="prefetch" href="/interview/assets/js/19.b825fdc2.js"><link rel="prefetch" href="/interview/assets/js/20.cd5870ba.js"><link rel="prefetch" href="/interview/assets/js/21.71580b2c.js"><link rel="prefetch" href="/interview/assets/js/22.cced48d7.js"><link rel="prefetch" href="/interview/assets/js/23.c5228822.js"><link rel="prefetch" href="/interview/assets/js/24.478e72eb.js"><link rel="prefetch" href="/interview/assets/js/25.3192440f.js"><link rel="prefetch" href="/interview/assets/js/26.8ed0b81c.js"><link rel="prefetch" href="/interview/assets/js/27.4532e80e.js"><link rel="prefetch" href="/interview/assets/js/28.c59f7355.js"><link rel="prefetch" href="/interview/assets/js/29.d0784306.js"><link rel="prefetch" href="/interview/assets/js/30.72641b5f.js"><link rel="prefetch" href="/interview/assets/js/31.6e4c0475.js"><link rel="prefetch" href="/interview/assets/js/32.8e3cf05d.js"><link rel="prefetch" href="/interview/assets/js/33.d3688fde.js"><link rel="prefetch" href="/interview/assets/js/34.5da46ad9.js"><link rel="prefetch" href="/interview/assets/js/35.bb67e589.js"><link rel="prefetch" href="/interview/assets/js/37.ccba1dd6.js"><link rel="prefetch" href="/interview/assets/js/38.55bad300.js"><link rel="prefetch" href="/interview/assets/js/39.1d680a34.js"><link rel="prefetch" href="/interview/assets/js/4.149f90e4.js"><link rel="prefetch" href="/interview/assets/js/5.c490b3e4.js"><link rel="prefetch" href="/interview/assets/js/6.7e5c0638.js"><link rel="prefetch" href="/interview/assets/js/7.458a7545.js"><link rel="prefetch" href="/interview/assets/js/8.093c9de9.js"><link rel="prefetch" href="/interview/assets/js/9.241cfaec.js">
+    <link rel="stylesheet" href="/interview/assets/css/0.styles.7bcb96c2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-6853d236><div data-v-6853d236><div class="password-shadow password-wrapper-out" style="display:none;" data-v-2d5d5590 data-v-6853d236 data-v-6853d236><h3 class="title" data-v-2d5d5590>我的博客</h3> <p class="description" data-v-2d5d5590>XXX</p> <label id="box" class="inputBox" data-v-2d5d5590><input type="password" value="" data-v-2d5d5590> <span data-v-2d5d5590>Konck! Knock!</span> <button data-v-2d5d5590>OK</button></label> <div class="footer" data-v-2d5d5590><span data-v-2d5d5590><i class="iconfont reco-theme" data-v-2d5d5590></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2d5d5590>vuePress-theme-reco</a></span> <span data-v-2d5d5590><i class="iconfont reco-copyright" data-v-2d5d5590></i> <a data-v-2d5d5590><!---->
+          
+        <!---->
+        2022
+      </a></span></div></div> <div class="hide" data-v-6853d236><header class="navbar" data-v-6853d236><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/interview/" class="home-link router-link-active"><!----> <span class="site-name">我的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/interview/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      song的博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/726107228492253" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/gemini-hjl" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-6853d236></div> <aside class="sidebar" data-v-6853d236><div class="personal-info-wrapper" data-v-3c280276 data-v-6853d236><!----> <!----> <div class="num" data-v-3c280276><div data-v-3c280276><h3 data-v-3c280276>22</h3> <h6 data-v-3c280276>文章</h6></div> <div data-v-3c280276><h3 data-v-3c280276>0</h3> <h6 data-v-3c280276>标签</h6></div></div> <ul class="social-links" data-v-3c280276></ul> <hr data-v-3c280276></div> <nav class="nav-links"><div class="nav-item"><a href="/interview/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      song的博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/726107228492253" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/gemini-hjl" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/interview/" class="sidebar-heading clickable router-link-active"><span>欢迎学习</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/interview/" aria-current="page" class="sidebar-link">博客简介</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/interview/1-base/css" class="sidebar-heading clickable"><span>web基础</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/interview/2-Vue/base" class="sidebar-heading clickable"><span>Vue框架</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/interview/3-node/Node-Modules" class="sidebar-heading clickable"><span>node服务端</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/interview/4-demo/puppeteerjs" class="sidebar-heading clickable"><span>用例收集</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/interview/5-over-the-wall/internet" class="sidebar-heading clickable open"><span>科学上网</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/interview/5-over-the-wall/internet.html" class="sidebar-link">三网线路</a></li><li><a href="/interview/5-over-the-wall/vpsChoose.html" class="sidebar-link">vps选择</a></li><li><a href="/interview/5-over-the-wall/x-ui.html" class="sidebar-link">x-ui节点搭建</a></li><li><a href="/interview/5-over-the-wall/linux-debian-line.html" class="sidebar-link">linux&amp;debian命令</a></li><li><a href="/interview/5-over-the-wall/VPSTestTools.html" class="sidebar-link">测VPS的常用脚本</a></li><li><a href="/interview/5-over-the-wall/testSpeed.html" aria-current="page" class="active sidebar-link">测速流程</a></li><li><a href="/interview/5-over-the-wall/picBed.html" class="sidebar-link">图床</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-2d5d5590 data-v-6853d236><h3 class="title" data-v-2d5d5590>节点测速流程</h3> <!----> <label id="box" class="inputBox" data-v-2d5d5590><input type="password" value="" data-v-2d5d5590> <span data-v-2d5d5590>Konck! Knock!</span> <button data-v-2d5d5590>OK</button></label> <div class="footer" data-v-2d5d5590><span data-v-2d5d5590><i class="iconfont reco-theme" data-v-2d5d5590></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-2d5d5590>vuePress-theme-reco</a></span> <span data-v-2d5d5590><i class="iconfont reco-copyright" data-v-2d5d5590></i> <a data-v-2d5d5590><!---->
+          
+        <!---->
+        2022
+      </a></span></div></div> <div data-v-6853d236><div data-v-6853d236><main class="page" style="padding-right:0;"><section style="display:;"><div class="page-title"><h1 class="title">节点测速流程</h1> <div data-v-305db890><i class="iconfont reco-account" data-v-305db890><span data-v-305db890>codinglin</span></i> <i class="iconfont reco-date" data-v-305db890><span data-v-305db890>2022/8/28</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#基础测试">基础测试</a><ul><li><a href="#superbench脚本">superbench脚本</a></li></ul></li><li><a href="#三网回程测试">三网回程测试</a><ul><li><a href="#脚本">脚本</a></li></ul></li><li><a href="#三网测速">三网测速</a><ul><li><a href="#脚本">脚本</a></li></ul></li><li><a href="#流媒体测试">流媒体测试</a><ul><li><a href="#脚本">脚本</a></li></ul></li><li><a href="#晚高峰速度测试">晚高峰速度测试</a><ul><li><a href="#成都电信">成都电信</a></li></ul></li></ul></div><p></p> <h2 id="基础测试"><a href="#基础测试" class="header-anchor">#</a> 基础测试</h2> <h3 id="superbench脚本"><a href="#superbench脚本" class="header-anchor">#</a> superbench脚本</h3> <p><code>wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash</code></p> <div class="language- extra-class"><pre class="language-text"><code>----------------------------------------------------------------------
+ CPU Model            : Intel Core Processor (Haswell, no TSX, IBRS)
+ CPU Cores            : 1 Cores 2299.996 MHz x86_64
+ CPU Cache            : 16384 KB 
+ OS                   : Debian GNU/Linux 10 (64 Bit) KVM
+ Kernel               : 4.19.0-8-cloud-amd64
+ Total Space          : 2.2 GB / 39.9 GB 
+ Total RAM            : 260 MB / 989 MB (576 MB Buff)
+ Total SWAP           : 0 MB / 0 MB
+ Uptime               : 3 days 22 hour 53 min
+ Load Average         : 0.07, 0.27, 0.35
+ TCP CC               : bbr
+ ASN &amp; ISP            : AS4785, xTom Limited
+ Organization         : 2EZ Network Inc
+ Location             : Mississauga, Canada / CA
+ Region               : Ontario
+----------------------------------------------------------------------
+ I/O Speed( 1.0GB )   : 288 MB/s
+ I/O Speed( 1.0GB )   : 235 MB/s
+ I/O Speed( 1.0GB )   : 377 MB/s
+ Average I/O Speed    : 300.0 MB/s
+----------------------------------------------------------------------
+ Node Name        Upload Speed      Download Speed      Latency     
+ Speedtest.net    316.10 Mbit/s     259.35 Mbit/s       (*)139.07 ms
+ Fast.com         0.00 Mbit/s       123.4 Mbit/s        -           
+ Nanjing 5G   CT  164.37 Mbit/s     322.35 Mbit/s       47.58 ms    
+ Hefei 5G     CT  48.26 Mbit/s      193.53 Mbit/s       49.16 ms    
+ Guangzhou 5G CT  0.41 Mbit/s       270.58 Mbit/s       77.71 ms    
+ Shanghai 5G  CU  386.49 Mbit/s     71.99 Mbit/s        88.66 ms    
+ Guangzhou 5G CU  330.41 Mbit/s     38.86 Mbit/s        115.81 ms   
+ Wuxi 5G      CM  75.40 Mbit/s      193.00 Mbit/s       75.28 ms    
+ Nanjing 5G   CM  99.86 Mbit/s      219.66 Mbit/s       79.90 ms    
+ Hefei 5G     CM  301.34 Mbit/s     159.63 Mbit/s       63.12 ms    
+----------------------------------------------------------------------
+ Finished in  : 5 min 12 sec
+ Timestamp    : 2022-06-11 21:51:05 GMT+8
+ Results      : ./superbench.log
+----------------------------------------------------------------------
+ Share result:
+ · https://www.speedtest.net/result/c/a4a33bb7-6e36-467f-8dd7-ddc397d02bef
+ · https://paste.ubuntu.com/p/dJyvn2JkMZ/
+----------------------------------------------------------------------
+
+收起 
+</code></pre></div><h2 id="三网回程测试"><a href="#三网回程测试" class="header-anchor">#</a> 三网回程测试</h2> <h3 id="脚本"><a href="#脚本" class="header-anchor">#</a> 脚本</h3> <p>：<code>wget -qO- git.io/besttrace | bash</code></p> <div class="language- extra-class"><pre class="language-text"><code>北京电信
+traceroute to 219.141.147.210 (219.141.147.210), 30 hops max, 32 byte packets
+ 1  45.8.223.85.static.xtom.com (45.8.223.85)  1.59 ms  AS4785  Japan, Osaka, xtom.com
+ 2  cs1708.q51.os1.xtom.jp (203.96.236.36)  18.40 ms  AS4785  Japan, Osaka, xtom.com
+ 3  203.96.236.0  8.60 ms  AS4785  Japan, Osaka, xtom.com
+ 4  124.147.24.33  1.90 ms  AS9607  Japan, Osaka, bbtower.co.jp
+ 5  124.147.24.34  2.48 ms  AS9607  Japan, Osaka, bbtower.co.jp
+ 6  172.29.0.1  3.87 ms  *  LAN Address
+ 7  210.130.146.149  1.60 ms  AS2497  Japan, Osaka, iij.ad.jp
+ 8  osk011bb01.IIJ.Net (58.138.81.77)  3.15 ms  AS2497  Japan, Osaka, iij.ad.jp
+ 9  tky009bb01.IIJ.Net (58.138.84.214)  8.76 ms  AS2497  Japan, Tokyo, iij.ad.jp
+10  tky009ix02.IIJ.Net (58.138.114.130)  10.52 ms  AS2497  Japan, Tokyo, iij.ad.jp
+11  203.215.236.73  8.69 ms  AS4134  Japan, Tokyo, ChinaTelecom
+12  202.97.93.174  55.62 ms  AS4134  China, Shanghai, ChinaTelecom
+13  202.97.90.58  53.90 ms  AS4134  China, Shanghai, ChinaTelecom
+14  202.97.24.249  60.59 ms  AS4134  China, Shanghai, ChinaTelecom
+15  *
+16  *
+17  6.254.120.106.static.bjtelecom.net (106.120.254.6)  119.00 ms  AS4847  China, Beijing, ChinaTelecom
+18  bj141-147-210.bjtelecom.net (219.141.147.210)  83.71 ms  AS4847  China, Beijing, ChinaTelecom
+
+----------------------------------------------------------------------
+北京联通
+traceroute to 202.106.50.1 (202.106.50.1), 30 hops max, 32 byte packets
+ 1  45.8.223.85.static.xtom.com (45.8.223.85)  1.53 ms  AS4785  Japan, Osaka, xtom.com
+ 2  cs1708.q51.os1.xtom.jp (203.96.236.36)  20.80 ms  AS4785  Japan, Osaka, xtom.com
+ 3  203.96.236.32.static.xtom.com (203.96.236.32)  1.32 ms  AS4785  Japan, Osaka, xtom.com
+ 4  cs1708.q51.os1.xtom.jp (203.96.236.59)  1.14 ms  AS4785  Japan, Osaka, xtom.com
+ 5  203.96.236.62.static.xtom.com (203.96.236.62)  0.92 ms  AS4785  Japan, Osaka, xtom.com
+ 6  124.147.24.33  0.82 ms  AS9607  Japan, Osaka, bbtower.co.jp
+ 7  124.147.24.34  1.18 ms  AS9607  Japan, Osaka, bbtower.co.jp
+ 8  172.29.0.1  0.98 ms  *  LAN Address
+ 9  210.130.146.149  1.52 ms  AS2497  Japan, Osaka, iij.ad.jp
+10  osk004bb01.IIJ.Net (58.138.106.165)  1.44 ms  AS2497  Japan, Osaka, iij.ad.jp
+11  tky009bb01.IIJ.Net (58.138.88.61)  8.60 ms  AS2497  Japan, Tokyo, iij.ad.jp
+12  tky009ix03.IIJ.Net (58.138.112.54)  10.05 ms  AS2497  Japan, Tokyo, iij.ad.jp
+13  202.232.1.158  84.45 ms  AS2497  Japan, Tokyo, iij.ad.jp
+14  219.158.24.29  95.69 ms  AS4837  China, Jilin, Changchun, ChinaUnicom
+15  219.158.19.90  95.75 ms  AS4837  China, Shanghai, ChinaUnicom
+16  *
+17  219.158.16.89  118.04 ms  AS4837  China, Beijing, ChinaUnicom
+18  *
+19  202.106.50.1  121.90 ms  AS4808  China, Beijing, ChinaUnicom
+
+----------------------------------------------------------------------
+北京移动
+traceroute to 221.179.155.161 (221.179.155.161), 30 hops max, 32 byte packets
+ 1  45.8.223.85.static.xtom.com (45.8.223.85)  4.59 ms  AS4785  Japan, Osaka, xtom.com
+ 2  cs1708.q51.os1.xtom.jp (203.96.236.36)  12.57 ms  AS4785  Japan, Osaka, xtom.com
+ 3  203.96.236.32.static.xtom.com (203.96.236.32)  1.13 ms  AS4785  Japan, Osaka, xtom.com
+ 4  222.230.187.138  2.04 ms  AS2519  Japan, Osaka, arteria-net.com
+ 5  222.230.187.137  1.12 ms  AS2519  Japan, Osaka, arteria-net.com
+ 6  163.139.37.22  2.16 ms  AS2519  Japan, Osaka, arteria-net.com
+ 7  unknown.telstraglobal.net (202.127.69.157)  13.44 ms  AS4637  Japan, Tokyo, telstra.com
+ 8  i-96.jtha-core02.telstraglobal.net (202.47.216.229)  13.60 ms  AS4637  Japan, Tokyo, telstra.com
+ 9  i-96.jtha-core02.telstraglobal.net (202.47.216.229)  15.23 ms  AS4637  Japan, Tokyo, telstra.com
+10  i-95.jtha01.telstraglobal.net (202.47.216.146)  35.34 ms  AS4637  Japan, Tokyo, telstra.com
+11  134.159.125.201  13.04 ms  AS4637  Japan, Tokyo, telstra.com
+12  223.120.2.198  211.68 ms  AS58453  China, Beijing, ChinaMobile
+13  221.183.55.110  211.06 ms  AS9808  China, Beijing, ChinaMobile
+14  221.183.25.201  114.27 ms  AS9808  China, Beijing, ChinaMobile
+15  221.183.89.122  151.37 ms  AS9808  China, Beijing, ChinaMobile
+16  221.183.46.178  146.12 ms  AS9808  China, Beijing, ChinaMobile
+17  *
+18  cachedns03.bj.chinamobile.com (221.179.155.161)  149.62 ms  AS56048  China, Beijing, ChinaMobile
+
+收起 
+</code></pre></div><h2 id="三网测速"><a href="#三网测速" class="header-anchor">#</a> 三网测速</h2> <h3 id="脚本-2"><a href="#脚本-2" class="header-anchor">#</a> 脚本</h3> <p><code>bash &lt;(curl -Lso- https://git.io/superspeed_uxh)</code></p> <div class="language- extra-class"><pre class="language-text"><code>——————————————————————————————————————————————————————————
+ID    测速服务器信息       上传/Mbps   下载/Mbps   延迟/ms
+3633  电信|上海　　　　　　↑ 55.93     ↓ 251.54    54.45   
+17145 电信|安徽合肥５Ｇ　　↑ 37.27     ↓ 174.53    64.40   
+27594 电信|广东广州５Ｇ　　↑ 7.98      ↓ 276.39    80.83   
+5396  电信|江苏苏州５Ｇ　　↑ 296.73    ↓ 271.51    49.49   
+23844 电信|湖北武汉　　　　↑ 66.37     ↓ 203.17    92.85   
+29353 电信|湖北武汉５Ｇ　　↑ 37.22     ↓ 257.01    55.84   
+28225 电信|湖南长沙５Ｇ　　↑ 36.37     ↓ 224.51    94.86   
+3973  电信|甘肃兰州　　　　↑ 29.13     ↓ 99.44     80.45   
+24447 联通|上海５Ｇ　　　　↑ 168.40    ↓ 100.30    107.28  
+26678 联通|广东广州５Ｇ　　↑ 224.65    ↓ 174.91    141.04  
+13704 联通|江苏南京　　　　↑ 351.60    ↓ 16.72     104.89  
+4870  联通|湖南长沙　　　　↑ 306.65    ↓ 20.61     108.84  
+25858 移动|北京　　　　　　↑ 405.55    ↓ 150.85    98.72   
+16398 移动|贵州贵阳　　　　↑ 73.79     ↓ 149.44    112.60  
+——————————————————————————————————————————————————————————
+</code></pre></div><h2 id="流媒体测试"><a href="#流媒体测试" class="header-anchor">#</a> 流媒体测试</h2> <h3 id="脚本-3"><a href="#脚本-3" class="header-anchor">#</a> 脚本</h3> <p><code>bash &lt;(curl -L -s https://git.io/JRw8R)</code></p> <div class="language- extra-class"><pre class="language-text"><code>============[ Multination ]============
+ Dazn:                                  No
+ HotStar:                               Yes (Region: CA)
+ Disney+:                               Yes (Region: CA)
+ Netflix:                               Yes (Region: JP)
+ YouTube Premium:                       Yes (Region: JP)
+ Amazon Prime Video:                    Unsupported
+ TVBAnywhere+:                          Yes
+ iQyi Oversea Region:                   CA
+ Viu.com:                               No
+ YouTube CDN:                           Osaka 
+ Netflix Preferred CDN:                 Osaka  
+ Spotify Registration:                  No
+ Steam Currency:                        CAD
+=======================================
+===============[ Japan ]===============
+ DMM:                                   No
+ Abema.TV:                              No
+ Niconico:                              No
+ music.jp:                              No
+ Telasa:                                No
+ Paravi:                                No
+ U-NEXT:                                No
+ Hulu Japan:                            Yes
+ TVer:                                  Yes
+ GYAO!:                                 No
+ WOWOW:                                 No
+ VideoMarket:                           No
+ FOD(Fuji TV):                          No
+ Radiko:                                No
+ Karaoke@DAM:                           No
+ J:com On Demand:                       No
+ ---Game---
+ Kancolle Japan:                        No
+ Pretty Derby Japan:                    No
+ Konosuba Fantastic Days:               No
+ Princess Connect Re:Dive Japan:        No
+ World Flipper Japan:                   Yes
+ Project Sekai: Colorful Stage:         Yes
+=======================================
+
+收起 
+</code></pre></div><h2 id="晚高峰速度测试"><a href="#晚高峰速度测试" class="header-anchor">#</a> 晚高峰速度测试</h2> <h3 id="成都电信"><a href="#成都电信" class="header-anchor">#</a> 成都电信</h3> <p><img src="https://tc.wwwcl.ltd/img/1655127654507-20220613214054.png" alt="img"></p> <p><img src="https://tc.wwwcl.ltd/img/1655127735535-20220613214215.png" alt="img"></p> <h4 id="山东移动千兆"><a href="#山东移动千兆" class="header-anchor">#</a> 山东移动千兆</h4> <p><img src="https://tc.wwwcl.ltd/img/1655127906923-20220613214506.png" alt="img"></p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/interview/5-over-the-wall/VPSTestTools.html" class="prev">
+          测VPS的常用脚本
+        </a></span> <span class="next"><a href="/interview/5-over-the-wall/picBed.html">
+          图床
+        </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-070bf1cb></ul></main></div> <!----></div></div></div></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/interview/assets/js/app.8b7001fa.js" defer></script><script src="/interview/assets/js/3.09e61146.js" defer></script><script src="/interview/assets/js/1.645caf6f.js" defer></script><script src="/interview/assets/js/36.3f091898.js" defer></script>
+  </body>
+</html>
